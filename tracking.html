@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Suivez l'état de votre commande Bloomy en temps réel.">
+    <title>Suivi de Commande | Bloomy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header header--solid" id="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <img src="images/logo.png" alt="Bloomy" class="header__logo-img" style="height: 48px; width: auto;">
+            </a>
+            <a href="index.html" class="btn btn--ghost">Retour à la boutique</a>
+        </div>
+    </header>
+
+    <main class="page">
+        <div class="page__container">
+            <div class="page__header">
+                <h1 class="page__title">Suivi de Commande</h1>
+                <p class="page__subtitle">Entrez votre numéro de commande pour suivre votre colis.</p>
+            </div>
+
+            <!-- Tracking Form -->
+            <div class="tracking-form" id="tracking-form">
+                <div class="form-group">
+                    <label for="order-number">Numéro de commande</label>
+                    <input type="text" id="order-number" placeholder="Ex: BLM-2026-XXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label for="order-email">Email de commande</label>
+                    <input type="email" id="order-email" placeholder="votre@email.com" required>
+                </div>
+                <button class="btn btn--primary btn--large" id="track-btn" style="width: 100%;">
+                    Suivre ma commande
+                </button>
+            </div>
+
+            <!-- Tracking Result (Hidden by default) -->
+            <div class="tracking-result" id="tracking-result" style="display: none;">
+                <div class="tracking-result__header">
+                    <div class="tracking-result__order">
+                        <span class="tracking-result__label">Commande</span>
+                        <span class="tracking-result__value" id="result-order-number">BLM-2026-12345</span>
+                    </div>
+                    <div class="tracking-result__status tracking-result__status--shipped">
+                        En cours de livraison
+                    </div>
+                </div>
+
+                <div class="tracking-timeline">
+                    <div class="tracking-step tracking-step--completed">
+                        <div class="tracking-step__icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <div class="tracking-step__content">
+                            <h4>Commande confirmée</h4>
+                            <p>Votre commande a été reçue et confirmée.</p>
+                            <span class="tracking-step__date">14 Jan 2026 - 10:30</span>
+                        </div>
+                    </div>
+
+                    <div class="tracking-step tracking-step--completed">
+                        <div class="tracking-step__icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <div class="tracking-step__content">
+                            <h4>En préparation</h4>
+                            <p>Votre commande est en cours de préparation.</p>
+                            <span class="tracking-step__date">14 Jan 2026 - 14:15</span>
+                        </div>
+                    </div>
+
+                    <div class="tracking-step tracking-step--completed">
+                        <div class="tracking-step__icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <div class="tracking-step__content">
+                            <h4>Expédié</h4>
+                            <p>Votre colis a été remis au transporteur.</p>
+                            <span class="tracking-step__date">15 Jan 2026 - 09:00</span>
+                        </div>
+                    </div>
+
+                    <div class="tracking-step tracking-step--active">
+                        <div class="tracking-step__icon">
+                            <div class="tracking-step__pulse"></div>
+                        </div>
+                        <div class="tracking-step__content">
+                            <h4>En cours de livraison</h4>
+                            <p>Votre colis est en route vers vous.</p>
+                            <span class="tracking-step__date">Livraison prévue : 18-19 Jan 2026</span>
+                        </div>
+                    </div>
+
+                    <div class="tracking-step">
+                        <div class="tracking-step__icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                <polyline points="9 22 9 12 15 12 15 22" />
+                            </svg>
+                        </div>
+                        <div class="tracking-step__content">
+                            <h4>Livré</h4>
+                            <p>Votre colis a été livré.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tracking-carrier">
+                    <div class="tracking-carrier__info">
+                        <span class="tracking-carrier__label">Numéro de suivi transporteur</span>
+                        <span class="tracking-carrier__number">1Z999AA10123456784</span>
+                    </div>
+                    <a href="#" class="btn btn--ghost">Suivre sur le site du transporteur</a>
+                </div>
+
+                <button class="btn btn--ghost" id="new-search" style="width: 100%; margin-top: var(--spacing-xl);">
+                    Suivre une autre commande
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer footer--simple">
+        <div class="footer__container">
+            <p class="footer__copyright">© 2026 Bloomy. Tous droits réservés.</p>
+            <div class="footer__links-inline">
+                <a href="cgv.html">CGV</a>
+                <a href="privacy.html">Confidentialité</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Demo tracking functionality
+        const trackingForm = document.getElementById('tracking-form');
+        const trackingResult = document.getElementById('tracking-result');
+        const trackBtn = document.getElementById('track-btn');
+        const newSearchBtn = document.getElementById('new-search');
+        const orderNumberInput = document.getElementById('order-number');
+        const resultOrderNumber = document.getElementById('result-order-number');
+
+        trackBtn.addEventListener('click', () => {
+            const orderNumber = orderNumberInput.value.trim();
+            if (orderNumber) {
+                resultOrderNumber.textContent = orderNumber || 'BLM-2026-12345';
+                trackingForm.style.display = 'none';
+                trackingResult.style.display = 'block';
+            }
+        });
+
+        newSearchBtn.addEventListener('click', () => {
+            trackingForm.style.display = 'block';
+            trackingResult.style.display = 'none';
+            orderNumberInput.value = '';
+        });
+    </script>
+</body>
+
+</html>

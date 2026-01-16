@@ -1,0 +1,974 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Finalisez votre commande Bloomy.">
+    <title>Commande | Bloomy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <style>
+        .checkout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: var(--spacing-3xl);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .checkout__main {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-2xl);
+        }
+
+        .checkout__sidebar {
+            position: sticky;
+            top: calc(var(--header-height) + var(--spacing-xl));
+            height: fit-content;
+        }
+
+        .checkout-section {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+        }
+
+        .checkout-section__title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .checkout-section__number {
+            width: 28px;
+            height: 28px;
+            background: var(--color-accent);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-sm);
+        }
+
+        .order-summary__item {
+            display: flex;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .order-summary__item:last-child {
+            border-bottom: none;
+        }
+
+        .order-summary__image {
+            width: 70px;
+            height: 70px;
+            background: #1a1a1a;
+            border-radius: var(--radius-md);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .order-summary__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .order-summary__details {
+            flex: 1;
+        }
+
+        .order-summary__name {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .order-summary__variant {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .order-summary__price {
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .order-summary__totals {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .order-summary__row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .order-summary__row--total {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--color-text);
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .promo-code {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+
+        .promo-code input {
+            flex: 1;
+        }
+
+        .promo-code button {
+            flex-shrink: 0;
+        }
+
+        .shipping-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .shipping-option {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--color-bg-secondary);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .shipping-option:hover,
+        .shipping-option.selected {
+            border-color: var(--color-accent);
+        }
+
+        .shipping-option input {
+            display: none;
+        }
+
+        .shipping-option__radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--color-border);
+            border-radius: 50%;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .shipping-option.selected .shipping-option__radio {
+            border-color: var(--color-accent);
+        }
+
+        .shipping-option.selected .shipping-option__radio::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        .shipping-option__info {
+            flex: 1;
+        }
+
+        .shipping-option__name {
+            font-weight: 500;
+        }
+
+        .shipping-option__delay {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .shipping-option__price {
+            font-weight: 600;
+        }
+
+        /* Stripe Elements Styles */
+        .stripe-element {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md) var(--spacing-lg);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .stripe-element:focus-within {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+        }
+
+        .stripe-element--invalid {
+            border-color: #ef4444;
+        }
+
+        .card-errors {
+            color: #ef4444;
+            font-size: var(--font-size-sm);
+            margin-top: var(--spacing-sm);
+            min-height: 20px;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .payment-method-tabs {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .payment-method-tab {
+            flex: 1;
+            padding: var(--spacing-md);
+            background: var(--color-bg-secondary);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+        }
+
+        .payment-method-tab:hover,
+        .payment-method-tab.active {
+            border-color: var(--color-accent);
+        }
+
+        .payment-method-tab.active {
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        .payment-method-content {
+            display: none;
+        }
+
+        .payment-method-content.active {
+            display: block;
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-top: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-lg);
+        }
+
+        .secure-badge svg {
+            color: var(--color-success);
+            flex-shrink: 0;
+        }
+
+        .secure-badge__logos {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-left: auto;
+        }
+
+        .secure-badge__logo {
+            padding: 4px 8px;
+            background: white;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .checkout__submit {
+            margin-top: var(--spacing-lg);
+        }
+
+        .checkout__submit button {
+            width: 100%;
+            position: relative;
+        }
+
+        .checkout__terms {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-top: var(--spacing-md);
+            text-align: center;
+        }
+
+        .checkout__terms a {
+            color: var(--color-accent);
+        }
+
+        .processing-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            flex-direction: column;
+            gap: var(--spacing-xl);
+        }
+
+        .processing-overlay.active {
+            display: flex;
+        }
+
+        .processing-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--color-border);
+            border-top-color: var(--color-accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .processing-text {
+            font-size: var(--font-size-lg);
+            color: var(--color-text);
+        }
+
+        @media (max-width: 900px) {
+            .checkout {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout__sidebar {
+                order: -1;
+                position: static;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header header--solid" id="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <img src="images/logo.png" alt="Bloomy" class="header__logo-img" style="height: 48px; width: auto;">
+            </a>
+            <div
+                style="display: flex; align-items: center; gap: var(--spacing-sm); color: var(--color-text-secondary); font-size: var(--font-size-sm);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+                Paiement sécurisé SSL
+            </div>
+        </div>
+    </header>
+
+    <!-- Processing Overlay -->
+    <div class="processing-overlay" id="processing-overlay">
+        <div class="processing-spinner"></div>
+        <div class="processing-text">Traitement du paiement en cours...</div>
+        <div style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Ne fermez pas cette page</div>
+    </div>
+
+    <main class="page" style="align-items: flex-start;">
+        <div class="checkout">
+            <div class="checkout__main">
+                <!-- Error Alert -->
+                <div class="alert alert--error" id="checkout-error" style="display: none;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="15" y1="9" x2="9" y2="15" />
+                        <line x1="9" y1="9" x2="15" y2="15" />
+                    </svg>
+                    <span id="checkout-error-message"></span>
+                </div>
+
+                <!-- Contact -->
+                <div class="checkout-section">
+                    <h2 class="checkout-section__title">
+                        <span class="checkout-section__number">1</span>
+                        Contact
+                    </h2>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="votre@email.com" required>
+                    </div>
+                    <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);" id="login-prompt">
+                        Déjà client ? <a href="account.html" style="color: var(--color-accent);">Connectez-vous</a>
+                        pour
+                        un checkout plus rapide
+                    </p>
+                </div>
+
+                <!-- Livraison -->
+                <div class="checkout-section">
+                    <h2 class="checkout-section__title">
+                        <span class="checkout-section__number">2</span>
+                        Livraison
+                    </h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstname">Prénom</label>
+                            <input type="text" id="firstname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Nom</label>
+                            <input type="text" id="lastname" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Adresse</label>
+                        <input type="text" id="address" placeholder="123 Rue de Paris" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address2">Complément (optionnel)</label>
+                        <input type="text" id="address2" placeholder="Appartement, étage, etc.">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 0.4;">
+                            <label for="postal">Code postal</label>
+                            <input type="text" id="postal" required>
+                        </div>
+                        <div class="form-group" style="flex: 0.6;">
+                            <label for="city">Ville</label>
+                            <input type="text" id="city" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Pays</label>
+                        <select id="country" required>
+                            <option value="FR">France</option>
+                            <option value="BE">Belgique</option>
+                            <option value="CH">Suisse</option>
+                            <option value="DE">Allemagne</option>
+                            <option value="US">États-Unis</option>
+                            <option value="UK">Royaume-Uni</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" placeholder="+33 6 00 00 00 00">
+                    </div>
+
+                    <h3
+                        style="font-size: var(--font-size-base); font-weight: 600; margin: var(--spacing-xl) 0 var(--spacing-md);">
+                        Mode de livraison</h3>
+                    <div class="shipping-options">
+                        <label class="shipping-option selected" data-price="0">
+                            <input type="radio" name="shipping" value="standard" checked>
+                            <div class="shipping-option__radio"></div>
+                            <div class="shipping-option__info">
+                                <div class="shipping-option__name">Standard</div>
+                                <div class="shipping-option__delay">3-5 jours ouvrés</div>
+                            </div>
+                            <div class="shipping-option__price">Gratuit</div>
+                        </label>
+                        <label class="shipping-option" data-price="990">
+                            <input type="radio" name="shipping" value="express">
+                            <div class="shipping-option__radio"></div>
+                            <div class="shipping-option__info">
+                                <div class="shipping-option__name">Express</div>
+                                <div class="shipping-option__delay">1-2 jours ouvrés</div>
+                            </div>
+                            <div class="shipping-option__price">9,90€</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Paiement -->
+                <div class="checkout-section">
+                    <h2 class="checkout-section__title">
+                        <span class="checkout-section__number">3</span>
+                        Paiement
+                    </h2>
+
+                    <!-- Payment Method Tabs -->
+                    <div class="payment-method-tabs">
+                        <div class="payment-method-tab active" data-method="card">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                                <line x1="1" y1="10" x2="23" y2="10" />
+                            </svg>
+                            Carte
+                        </div>
+                        <div class="payment-method-tab" data-method="paypal" style="opacity: 0.5; cursor: not-allowed;">
+                            PayPal
+                            <span style="font-size: 10px; color: var(--color-text-secondary);">(Bientôt)</span>
+                        </div>
+                    </div>
+
+                    <!-- Card Payment Form -->
+                    <div class="payment-method-content active" id="payment-card">
+                        <div class="form-group">
+                            <label>Informations de carte</label>
+                            <div class="stripe-element" id="card-element">
+                                <!-- Stripe Card Element will be mounted here -->
+                            </div>
+                            <div class="card-errors" id="card-errors"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="card-name">Nom sur la carte</label>
+                            <input type="text" id="card-name" placeholder="JEAN DUPONT" required
+                                style="text-transform: uppercase;">
+                        </div>
+                    </div>
+
+                    <!-- Stripe Security Badge -->
+                    <div class="secure-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                        <div>
+                            <strong>Paiement 100% sécurisé</strong>
+                            <div style="font-size: 11px;">Vos données sont chiffrées et protégées par Stripe</div>
+                        </div>
+                        <div class="secure-badge__logos">
+                            <span class="secure-badge__logo">VISA</span>
+                            <span class="secure-badge__logo">MC</span>
+                            <span class="secure-badge__logo">AMEX</span>
+                        </div>
+                    </div>
+
+                    <div class="checkout__submit">
+                        <button class="btn btn--primary btn--xlarge" id="submit-order" type="button">
+                            <span class="btn-text">Payer <span id="btn-total">16,99€</span></span>
+                            <span class="btn-loader"></span>
+                        </button>
+                    </div>
+                    <p class="checkout__terms">
+                        En passant commande, vous acceptez nos <a href="cgv.html">CGV</a> et notre <a
+                            href="privacy.html">Politique de confidentialité</a>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sidebar - Récapitulatif -->
+            <div class="checkout__sidebar">
+                <div class="checkout-section">
+                    <h2 class="checkout-section__title">Récapitulatif</h2>
+                    <div class="order-summary__items" id="order-items">
+                        <!-- Items loaded dynamically -->
+                    </div>
+
+                    <div class="promo-code">
+                        <input type="text" id="promo-input" placeholder="Code promo">
+                        <button class="btn btn--ghost" id="apply-promo">Appliquer</button>
+                    </div>
+
+                    <div class="order-summary__totals">
+                        <div class="order-summary__row">
+                            <span>Sous-total</span>
+                            <span id="subtotal">0,00€</span>
+                        </div>
+                        <div class="order-summary__row" id="discount-row" style="display: none;">
+                            <span>Réduction</span>
+                            <span id="discount" style="color: #22c55e;">-0,00€</span>
+                        </div>
+                        <div class="order-summary__row">
+                            <span>Livraison</span>
+                            <span id="shipping-cost">Gratuit</span>
+                        </div>
+                        <div class="order-summary__row order-summary__row--total">
+                            <span>Total</span>
+                            <span id="total">0,00€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trust Badges -->
+                <div
+                    style="display: flex; flex-direction: column; gap: var(--spacing-md); margin-top: var(--spacing-lg);">
+                    <div
+                        style="display: flex; align-items: center; gap: var(--spacing-sm); font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        Livraison gratuite dès 50€
+                    </div>
+                    <div
+                        style="display: flex; align-items: center; gap: var(--spacing-sm); font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        Retour gratuit sous 30 jours
+                    </div>
+                    <div
+                        style="display: flex; align-items: center; gap: var(--spacing-sm); font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        Garantie 2 ans incluse
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer footer--simple">
+        <div class="footer__container">
+            <p class="footer__copyright">© 2026 Bloomy. Tous droits réservés.</p>
+            <div class="footer__links-inline">
+                <a href="cgv.html">CGV</a>
+                <a href="privacy.html">Confidentialité</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/stripe.js"></script>
+    <script>
+        // =====================================================
+        // Initialize
+        // =====================================================
+        const PRODUCT_PRICE = 1699; // 16.99€ in cents
+        let shippingCost = 0;
+        let discountAmount = 0;
+        let cart = JSON.parse(localStorage.getItem('bloomy_cart')) || [];
+
+        // If cart is empty, add default item
+        if (cart.length === 0) {
+            cart = [{
+                id: 'bloomy-smart-case',
+                name: 'Bloomy Smart Case',
+                price: 16.99,
+                color: 'white',
+                quantity: 1
+            }];
+        } else {
+            // Fix existing cart prices (migration legacy 149 -> 16.99)
+            cart = cart.map(item => {
+                if (item.id === 'bloomy-smart-case' && (item.price === 149 || item.price === 14900)) {
+                    item.price = 16.99;
+                }
+                // Si le prix est en centimes (1699), on le remet en euros float (16.99) pour uniformiser le calcul *100 plus loin
+                if (item.price === 1699) {
+                    item.price = 16.99;
+                }
+                return item;
+            });
+            // Save corrected cart back to storage
+            localStorage.setItem('bloomy_cart', JSON.stringify(cart));
+        }
+
+        // DOM Elements
+        const orderItems = document.getElementById('order-items');
+        const subtotalEl = document.getElementById('subtotal');
+        const shippingCostEl = document.getElementById('shipping-cost');
+        const discountRowEl = document.getElementById('discount-row');
+        const discountEl = document.getElementById('discount');
+        const totalEl = document.getElementById('total');
+        const btnTotal = document.getElementById('btn-total');
+        const submitBtn = document.getElementById('submit-order');
+        const processingOverlay = document.getElementById('processing-overlay');
+        const checkoutError = document.getElementById('checkout-error');
+        const errorMessage = document.getElementById('checkout-error-message');
+
+        // Color names
+        const colorNames = {
+            black: 'Noir',
+            white: 'Blanc'
+        };
+
+        // Initialize shipping from DOM state (browser cache restoration)
+        const checkedShipping = document.querySelector('input[name="shipping"]:checked');
+        if (checkedShipping) {
+            const option = checkedShipping.closest('.shipping-option');
+            if (option) {
+                shippingCost = parseInt(option.dataset.price) || 0;
+                // Ensure visual state matches
+                document.querySelectorAll('.shipping-option').forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+            }
+        }
+
+        // =====================================================
+        // Check if user is logged in
+        // =====================================================
+        if (BloomyAuth.isLoggedIn()) {
+            const user = BloomyAuth.getCurrentUser();
+            document.getElementById('email').value = user.email;
+            document.getElementById('firstname').value = user.firstName;
+            document.getElementById('lastname').value = user.lastName;
+            document.getElementById('login-prompt').style.display = 'none';
+
+            // Fill address if available
+            if (user.addresses && user.addresses.length > 0) {
+                const defaultAddr = user.addresses.find(a => a.isDefault) || user.addresses[0];
+                document.getElementById('address').value = defaultAddr.street || '';
+                document.getElementById('address2').value = defaultAddr.street2 || '';
+                document.getElementById('postal').value = defaultAddr.postal || '';
+                document.getElementById('city').value = defaultAddr.city || '';
+                document.getElementById('country').value = defaultAddr.country || 'FR';
+                document.getElementById('phone').value = defaultAddr.phone || '';
+            }
+        }
+
+        // =====================================================
+        // Render Order Summary
+        // =====================================================
+        function renderOrderSummary() {
+            orderItems.innerHTML = cart.map(item => {
+                const imageSrc = item.image || (item.color === 'black' ? 'images/hero-product-black.png' : 'images/hero-product.png');
+                return `
+                <div class="order-summary__item">
+                    <div class="order-summary__image">
+                        <img src="${imageSrc}" alt="${item.name}">
+                    </div>
+                    <div class="order-summary__details">
+                        <div class="order-summary__name">${item.name}</div>
+                        <div class="order-summary__variant">${colorNames[item.color] || item.color} • Qté: ${item.quantity}</div>
+                    </div>
+                    <div class="order-summary__price">${item.price}€</div>
+                </div>
+            `}).join('');
+
+            updateTotals();
+        }
+
+        function updateTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity * 100), 0);
+            const total = subtotal + shippingCost - discountAmount;
+
+            subtotalEl.textContent = formatPrice(subtotal);
+            shippingCostEl.textContent = shippingCost === 0 ? 'Gratuit' : formatPrice(shippingCost);
+
+            if (discountAmount > 0) {
+                discountRowEl.style.display = 'flex';
+                discountEl.textContent = '-' + formatPrice(discountAmount);
+            } else {
+                discountRowEl.style.display = 'none';
+            }
+
+            totalEl.textContent = formatPrice(total);
+            btnTotal.textContent = formatPrice(total);
+        }
+
+        function formatPrice(cents) {
+            return (cents / 100).toFixed(2).replace('.', ',') + '€';
+        }
+
+        // =====================================================
+        // Shipping Selection
+        // =====================================================
+        document.querySelectorAll('.shipping-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.shipping-option').forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+                option.querySelector('input').checked = true;
+                shippingCost = parseInt(option.dataset.price) || 0;
+                updateTotals();
+            });
+        });
+
+        // =====================================================
+        // Promo Codes
+        // =====================================================
+        const promoCodes = {
+            'WELCOME10': 0.10, // 10% off
+            'BLOOMY20': 0.20  // 20% off
+        };
+
+        document.getElementById('apply-promo').addEventListener('click', () => {
+            const code = document.getElementById('promo-input').value.toUpperCase().trim();
+
+            if (promoCodes[code]) {
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity * 100), 0);
+                discountAmount = Math.round(subtotal * promoCodes[code]);
+                document.getElementById('promo-input').disabled = true;
+                document.getElementById('apply-promo').textContent = 'âœ“ Appliqué';
+                document.getElementById('apply-promo').disabled = true;
+                updateTotals();
+            } else if (code) {
+                showError('Code promo invalide.');
+            }
+        });
+
+        // =====================================================
+        // Initialize Stripe
+        // =====================================================
+        let stripe, cardElement;
+
+        async function initStripe() {
+            // Wait for Stripe to load
+            await BloomyPayment.init();
+
+            stripe = BloomyPayment.stripe;
+            cardElement = BloomyPayment.createCardElement('card-element');
+
+            // Handle card errors
+            if (cardElement) {
+                cardElement.on('change', (event) => {
+                    const displayError = document.getElementById('card-errors');
+                    if (event.error) {
+                        displayError.textContent = event.error.message;
+                    } else {
+                        displayError.textContent = '';
+                    }
+                });
+            }
+        }
+
+        initStripe();
+
+        // =====================================================
+        // Form Validation
+        // =====================================================
+        function validateForm() {
+            const requiredFields = ['email', 'firstname', 'lastname', 'address', 'postal', 'city', 'card-name'];
+
+            for (const fieldId of requiredFields) {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.focus();
+                    showError(`Veuillez remplir le champ "${field.previousElementSibling.textContent}".`);
+                    return false;
+                }
+            }
+
+            // Validate email
+            const email = document.getElementById('email').value;
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showError('Veuillez entrer une adresse email valide.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            checkoutError.style.display = 'flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function hideError() {
+            checkoutError.style.display = 'none';
+        }
+
+        // =====================================================
+        // Submit Order
+        // =====================================================
+        submitBtn.addEventListener('click', async () => {
+            hideError();
+
+            // Validate form
+            if (!validateForm()) {
+                return;
+            }
+
+            // Disable button and show loading
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            // Calculate total
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity * 100), 0);
+            const total = subtotal + shippingCost - discountAmount;
+
+            // Create payment intent
+            await BloomyPayment.createPaymentIntent(total, 'eur', {
+                email: document.getElementById('email').value
+            });
+
+            // Show processing overlay
+            processingOverlay.classList.add('active');
+
+            // Process payment with Stripe
+            const billingDetails = {
+                name: document.getElementById('card-name').value,
+                email: document.getElementById('email').value,
+                address: {
+                    line1: document.getElementById('address').value,
+                    line2: document.getElementById('address2').value,
+                    city: document.getElementById('city').value,
+                    postal_code: document.getElementById('postal').value,
+                    country: document.getElementById('country').value
+                }
+            };
+
+            const result = await BloomyPayment.processPayment(billingDetails);
+
+            if (result.success) {
+                // Create order in database
+                const orderData = {
+                    email: document.getElementById('email').value,
+                    items: cart,
+                    shipping: {
+                        firstName: document.getElementById('firstname').value,
+                        lastName: document.getElementById('lastname').value,
+                        address: document.getElementById('address').value,
+                        address2: document.getElementById('address2').value,
+                        city: document.getElementById('city').value,
+                        postal: document.getElementById('postal').value,
+                        country: document.getElementById('country').value,
+                        phone: document.getElementById('phone').value,
+                        method: document.querySelector('input[name="shipping"]:checked').value
+                    },
+                    billing: billingDetails,
+                    total: total / 100,
+                    paymentIntent: result.paymentIntent.id
+                };
+
+                const orderResult = BloomyAuth.createOrder(orderData);
+
+                if (orderResult.success) {
+                    // Clear cart
+                    localStorage.removeItem('bloomy_cart');
+
+                    // Redirect to confirmation page
+                    window.location.href = `confirmation.html?order=${orderResult.order.id}`;
+                }
+            } else {
+                processingOverlay.classList.remove('active');
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                showError(result.error);
+            }
+        });
+
+        // =====================================================
+        // Initialize Page
+        // =====================================================
+        renderOrderSummary();
+    </script>
+</body>
+
+</html>

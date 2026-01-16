@@ -1,0 +1,1031 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Bloomy Smart Case - Les premiers écouteurs sans fil avec boîtier à écran tactile. Contrôlez votre musique, vos appels et plus encore directement sur le boîtier.">
+    <meta name="keywords" content="écouteurs sans fil, bluetooth, écran tactile, smart case, Bloomy, earbuds, ANC">
+    <meta name="author" content="Bloomy">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Bloomy Smart Case - L'écran tactile sur vos écouteurs">
+    <meta property="og:description"
+        content="Le premier boîtier d'écouteurs avec écran tactile intégré. Contrôlez tout, d'un simple toucher.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bloomy.com">
+    <meta property="og:image" content="images/og-image.jpg">
+
+    <title>Bloomy Smart Case | Écouteurs Sans Fil avec Écran Tactile</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <img src="images/logo.png" alt="Bloomy" class="header__logo-img" style="height: 48px; width: auto;">
+            </a>
+
+            <nav class="header__nav">
+                <a href="#features" class="header__nav-link">Fonctionnalités</a>
+                <a href="#specs" class="header__nav-link">Spécifications</a>
+                <a href="#reviews" class="header__nav-link">Avis</a>
+            </nav>
+
+            <div class="header__actions">
+                <button class="header__theme-toggle" id="theme-toggle" aria-label="Bascule thème"
+                    style="margin-right: 12px; opacity: 0.8; transition: opacity 0.2s;">
+                    <svg class="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" style="display: block;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" style="display: none;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <button class="header__cart" id="cart-btn" aria-label="Panier">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span class="header__cart-count" id="cart-count">0</span>
+                </button>
+                <a href="account.html" class="header__account" id="account-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    <span class="header__account-text" id="account-text">Connexion</span>
+                </a>
+            </div>
+
+            <button class="header__menu-toggle" id="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-menu__nav">
+            <a href="#features" class="mobile-menu__link">Fonctionnalités</a>
+            <a href="#specs" class="mobile-menu__link">Spécifications</a>
+            <a href="#reviews" class="mobile-menu__link">Avis</a>
+            <a href="account.html" class="mobile-menu__link">Mon Compte</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero__background">
+                <div class="hero__gradient"></div>
+                <div class="hero__particles" id="particles"></div>
+            </div>
+
+            <div class="hero__content">
+                <h1 class="hero__title">
+                    <span class="hero__title-line">L'écran tactile.</span>
+                    <span class="hero__title-line hero__title-line--accent">Sur vos écouteurs.</span>
+                </h1>
+
+                <p class="hero__description">
+                    Le premier boîtier d'écouteurs avec écran tactile intégré.
+                    Contrôlez votre musique, vos appels et plus encore, d'un simple toucher.
+                </p>
+
+                <div class="color-picker-container"
+                    style="margin-bottom: var(--spacing-lg); position: relative; z-index: 20;">
+                    <span
+                        style="display: block; font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">Couleur
+                        : <strong id="color-name" style="color: var(--color-text);">Blanc</strong></span>
+                    <div style="display: flex; gap: var(--spacing-md);">
+                        <button class="color-btn active" onclick="changeColor('white')"
+                            style="width: 32px; height: 32px; border-radius: 50%; background: #f5f5f5; border: 2px solid var(--color-accent); cursor: pointer; transition: transform 0.2s;"
+                            aria-label="Blanc"></button>
+                        <button class="color-btn" onclick="changeColor('black')"
+                            style="width: 32px; height: 32px; border-radius: 50%; background: #1a1a1a; border: 2px solid transparent; cursor: pointer; transition: transform 0.2s; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);"
+                            aria-label="Noir"></button>
+                    </div>
+                </div>
+
+                <div class="hero__cta">
+                    <a href="#buy" class="btn btn--primary btn--large" id="buy-btn">
+                        <span>Acheter <span
+                                style="text-decoration: line-through; opacity: 0.7; margin-right: 4px;">35€</span>
+                            16,99€</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <a href="#features" class="btn btn--ghost btn--large">
+                        Découvrir
+                    </a>
+                </div>
+
+                <div class="hero__stats">
+                    <div class="hero__stat">
+                        <span class="hero__stat-value">50h</span>
+                        <span class="hero__stat-label">d'autonomie</span>
+                    </div>
+                    <div class="hero__stat-divider"></div>
+                    <div class="hero__stat">
+                        <span class="hero__stat-value">1.4"</span>
+                        <span class="hero__stat-label">écran AMOLED</span>
+                    </div>
+                    <div class="hero__stat-divider"></div>
+                    <div class="hero__stat">
+                        <span class="hero__stat-value">ANC</span>
+                        <span class="hero__stat-label">hybride</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero__product">
+                <div class="hero__product-glow"></div>
+                <div class="hero__product-image" id="hero-product">
+                    <img src="images/hero-product.png"
+                        alt="Bloomy Smart Case - Écouteurs sans fil avec boîtier à écran tactile"
+                        class="hero__product-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 1: Touchscreen -->
+        <section class="feature feature--reverse" id="features">
+            <div class="feature__container">
+                <div class="feature__visual">
+                    <div class="feature__image-wrapper">
+                        <div class="feature__image feature__image--screen">
+                            <img src="images/case-screen.png" alt="Écran tactile AMOLED du boîtier Bloomy"
+                                class="feature__product-img">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature__content">
+                    <span class="feature__label">Innovation</span>
+                    <h2 class="feature__title">L'écran qui change tout.</h2>
+                    <p class="feature__description">
+                        Fini les gestes compliqués sur vos oreilles. Avec l'écran tactile AMOLED
+                        de 1.4 pouces, prenez le contrôle total de votre expérience audio.
+                    </p>
+
+                    <ul class="feature__list">
+                        <li class="feature__list-item">
+                            <div class="feature__list-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M9 18V5l12-2v13" />
+                                    <circle cx="6" cy="18" r="3" />
+                                    <circle cx="18" cy="16" r="3" />
+                                </svg>
+                            </div>
+                            <div class="feature__list-text">
+                                <strong>Changez de musique</strong>
+                                <span>d'un simple swipe</span>
+                            </div>
+                        </li>
+                        <li class="feature__list-item">
+                            <div class="feature__list-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                                </svg>
+                            </div>
+                            <div class="feature__list-text">
+                                <strong>Réglez le volume</strong>
+                                <span>intuitivement</span>
+                            </div>
+                        </li>
+                        <li class="feature__list-item">
+                            <div class="feature__list-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" />
+                                    <line x1="23" y1="10" x2="23" y2="14" />
+                                </svg>
+                            </div>
+                            <div class="feature__list-text">
+                                <strong>Consultez la batterie</strong>
+                                <span>en un coup d'œil</span>
+                            </div>
+                        </li>
+                        <li class="feature__list-item">
+                            <div class="feature__list-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                                    <line x1="12" y1="19" x2="12" y2="23" />
+                                    <line x1="8" y1="23" x2="16" y2="23" />
+                                </svg>
+                            </div>
+                            <div class="feature__list-text">
+                                <strong>Activez la réduction de bruit</strong>
+                                <span>instantanément</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 2: Sound Quality -->
+        <section class="feature-full" id="sound">
+            <div class="feature-full__background">
+                <div class="sound-waves">
+                    <div class="sound-wave"></div>
+                    <div class="sound-wave"></div>
+                    <div class="sound-wave"></div>
+                </div>
+            </div>
+
+            <div class="feature-full__container">
+                <div class="feature-full__header">
+                    <span class="feature__label">Qualité Audio</span>
+                    <h2 class="feature-full__title">Un son qui vous transporte.</h2>
+                    <p class="feature-full__subtitle">
+                        Des basses profondes aux aigus cristallins, chaque note est restituée avec une précision
+                        exceptionnelle.
+                    </p>
+                </div>
+
+                <div class="feature-full__grid">
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <circle cx="12" cy="12" r="6" />
+                                <circle cx="12" cy="12" r="2" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Drivers 12mm</h3>
+                        <p class="feature-card__description">
+                            Drivers dynamiques haute définition pour des basses profondes et des aigus cristallins.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">ANC Hybride</h3>
+                        <p class="feature-card__description">
+                            Réduction de bruit active hybride pour une isolation parfaite du monde extérieur.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                                <line x1="12" y1="19" x2="12" y2="23" />
+                                <line x1="8" y1="23" x2="16" y2="23" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">4 Micros HD</h3>
+                        <p class="feature-card__description">
+                            Quatre microphones haute définition pour des appels d'une clarté exceptionnelle.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 3: Freedom -->
+        <section class="feature" id="freedom">
+            <div class="feature__container">
+                <div class="feature__visual">
+                    <div class="feature__image-wrapper">
+                        <div class="feature__image feature__image--freedom">
+                            <img src="images/lifestyle.png" alt="Utilisation des écouteurs Bloomy en ville"
+                                class="feature__product-img">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature__content">
+                    <span class="feature__label">Autonomie</span>
+                    <h2 class="feature__title">Une liberté sans compromis.</h2>
+                    <p class="feature__description">
+                        Jusqu'à  50 heures d'autonomie avec le boîtier. Vous accompagne du matin au soir,
+                        jour après jour, sans jamais vous laisser tomber.
+                    </p>
+
+                    <ul class="feature__list">
+                        <li class="feature__list-item">
+                            <div class="feature__list-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                            </div>
+                            <div class="feature__list-text">
+                                <strong>10h d'écoute continue</strong>
+                                <span>sans interruption</span>
+                            </div>
+                        </li>
+                        <li class="feature__list-item">
+                            <div class="feature__list-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                                </svg>
+                            </div>
+                            <div class="feature__list-text">
+                                <strong>Charge rapide</strong>
+                                <span>10 min = 2h de musique</span>
+                            </div>
+                        </li>
+                        <li class="feature__list-item">
+                            <div class="feature__list-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                                    <circle cx="12" cy="20" r="1" />
+                                </svg>
+                            </div>
+                            <div class="feature__list-text">
+                                <strong>Bluetooth 5.3</strong>
+                                <span>Connexion ultra-stable</span>
+                            </div>
+                        </li>
+                        <li class="feature__list-item">
+                            <div class="feature__list-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                                </svg>
+                            </div>
+                            <div class="feature__list-text">
+                                <strong>Résistance IPX5</strong>
+                                <span>Pluie et transpiration</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specifications -->
+        <section class="specs" id="specs">
+            <div class="specs__container">
+                <div class="specs__header">
+                    <span class="feature__label">Technique</span>
+                    <h2 class="specs__title">Conçu dans les moindres détails.</h2>
+                </div>
+
+                <div class="specs__grid">
+                    <div class="specs__card">
+                        <div class="specs__card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M9 18V5l12-2v13" />
+                                <circle cx="6" cy="18" r="3" />
+                                <circle cx="18" cy="16" r="3" />
+                            </svg>
+                            <h3>Audio</h3>
+                        </div>
+                        <ul class="specs__list">
+                            <li><span>Drivers</span><span>12mm dynamiques</span></li>
+                            <li><span>Réponse</span><span>20Hz - 20kHz</span></li>
+                            <li><span>Codecs</span><span>AAC, SBC, LDAC</span></li>
+                            <li><span>ANC</span><span>Hybride actif</span></li>
+                            <li><span>Mode</span><span>Transparence</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="specs__card">
+                        <div class="specs__card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                <line x1="8" y1="21" x2="16" y2="21" />
+                                <line x1="12" y1="17" x2="12" y2="21" />
+                            </svg>
+                            <h3>Boîtier</h3>
+                        </div>
+                        <ul class="specs__list">
+                            <li><span>Écran</span><span>1.4" AMOLED tactile</span></li>
+                            <li><span>Résolution</span><span>360 × 360 px</span></li>
+                            <li><span>Batterie</span><span>500mAh</span></li>
+                            <li><span>Charge</span><span>USB-C + Sans fil</span></li>
+                            <li><span>Matériau</span><span>Aluminium anodisé</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="specs__card">
+                        <div class="specs__card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                                <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                                <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                                <circle cx="12" cy="20" r="1" />
+                            </svg>
+                            <h3>Connectivité</h3>
+                        </div>
+                        <ul class="specs__list">
+                            <li><span>Bluetooth</span><span>5.3</span></li>
+                            <li><span>Portée</span><span>15 mètres</span></li>
+                            <li><span>Multipoint</span><span>2 appareils</span></li>
+                            <li><span>Latence</span><span>
+                                    < 80ms (mode jeu)</span>
+                            </li>
+                            <li><span>Appairage</span><span>Google Fast Pair</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="specs__card">
+                        <div class="specs__card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="1" y="6" width="18" height="12" rx="2" />
+                                <line x1="23" y1="10" x2="23" y2="14" />
+                            </svg>
+                            <h3>Autonomie</h3>
+                        </div>
+                        <ul class="specs__list">
+                            <li><span>Écouteurs</span><span>10h (ANC on)</span></li>
+                            <li><span>Avec boîtier</span><span>50h total</span></li>
+                            <li><span>Charge rapide</span><span>10min = 2h</span></li>
+                            <li><span>Charge complète</span><span>1h30</span></li>
+                            <li><span>Sans fil</span><span>Qi compatible</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA / Buy Section -->
+        <section class="cta" id="buy">
+            <div class="cta__container">
+                <div class="cta__product">
+                    <div class="cta__product-glow"></div>
+                    <div class="cta__product-image">
+                        <img src="images/hero-product.png" alt="Écouteurs Bloomy Smart Case" class="cta__product-img">
+                    </div>
+                </div>
+
+                <div class="cta__content">
+                    <h2 class="cta__title">Prêt à changer votre façon d'écouter ?</h2>
+
+                    <div class="cta__product-info">
+                        <h3 class="cta__product-name">Bloomy Smart Case</h3>
+
+                        <ul class="cta__features">
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                Écran tactile AMOLED 1.4"
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                Réduction de bruit active hybride
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                50h d'autonomie totale
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                Livraison gratuite
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                Garantie 2 ans
+                            </li>
+                        </ul>
+
+                        <div class="cta__price" style="display: flex; align-items: baseline; gap: 12px;">
+                            <span class="cta__price-old"
+                                style="text-decoration: line-through; color: var(--color-text-secondary); font-size: 1.5rem;">35€</span>
+                            <span class="cta__price-current"
+                                style="color: var(--color-accent); font-size: 2.5rem; font-weight: 700;">16,99€</span>
+                        </div>
+
+                        <div class="cta__colors">
+                            <span class="cta__colors-label">Couleur :</span>
+                            <div class="cta__color-options" style="position: relative; z-index: 10;">
+                                <button class="cta__color cta__color--black" data-color="black" title="Noir"></button>
+                                <button class="cta__color cta__color--white active" data-color="white"
+                                    title="Blanc"></button>
+                            </div>
+                        </div>
+
+                        <button class="btn btn--primary btn--xlarge cta__button" id="add-to-cart"
+                            onclick="addToCartAndCheckout()">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                <line x1="3" y1="6" x2="21" y2="6" />
+                                <path d="M16 10a4 4 0 0 1-8 0" />
+                            </svg>
+                            Ajouter au panier
+                        </button>
+
+                        <div class="cta__trust">
+                            <div class="cta__trust-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg>
+                                Paiement sécurisé
+                            </div>
+                            <div class="cta__trust-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="1" y="3" width="15" height="13" />
+                                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+                                    <circle cx="5.5" cy="18.5" r="2.5" />
+                                    <circle cx="18.5" cy="18.5" r="2.5" />
+                                </svg>
+                                Livraison 3-5 jours
+                            </div>
+                            <div class="cta__trust-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="9 10 4 15 9 20" />
+                                    <path d="M20 4v7a4 4 0 0 1-4 4H4" />
+                                </svg>
+                                Retour 30 jours
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews" id="reviews">
+            <div class="reviews__container">
+                <div class="reviews__header">
+                    <span class="feature__label">Avis Clients</span>
+                    <h2 class="reviews__title">Ce qu'ils en disent.</h2>
+                    <div class="reviews__rating">
+                        <div class="reviews__stars">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                        <span class="reviews__score">4.8/5</span>
+                        <span class="reviews__count">(416 avis)</span>
+                    </div>
+                </div>
+
+                <div class="reviews__grid">
+                    <div class="review-card">
+                        <div class="review-card__header">
+                            <div class="review-card__avatar">ML</div>
+                            <div class="review-card__info">
+                                <span class="review-card__name">Marie L.</span>
+                                <span class="review-card__location">Paris, France</span>
+                            </div>
+                        </div>
+                        <div class="review-card__stars">★★★★★</div>
+                        <p class="review-card__text">
+                            "L'écran tactile sur le boîtier est une révolution. Je ne reviendrai jamais en arrière.
+                            La qualité sonore est exceptionnelle et le design est vraiment premium."
+                        </p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-card__header">
+                            <div class="review-card__avatar">TK</div>
+                            <div class="review-card__info">
+                                <span class="review-card__name">Thomas K.</span>
+                                <span class="review-card__location">Lyon, France</span>
+                            </div>
+                        </div>
+                        <div class="review-card__stars">★★★★★</div>
+                        <p class="review-card__text">
+                            "Son incroyable, ANC efficace, et ce boîtier... C'est le futur des écouteurs.
+                            L'autonomie de 50h est impressionnante, je charge une fois par semaine."
+                        </p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-card__header">
+                            <div class="review-card__avatar">SM</div>
+                            <div class="review-card__info">
+                                <span class="review-card__name">Sarah M.</span>
+                                <span class="review-card__location">New York, USA</span>
+                            </div>
+                        </div>
+                        <div class="review-card__stars">★★★★★</div>
+                        <p class="review-card__text">
+                            "J'étais sceptique, mais ce sont sincèrement les meilleurs écouteurs que j'ai eus.
+                            L'écran du boîtier est génial - je peux tout contrôler sans toucher mon téléphone."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <a href="/" class="footer__logo">
+                        <svg class="footer__logo-icon" viewBox="0 0 40 40" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2" />
+                            <circle cx="20" cy="20" r="8" fill="currentColor" />
+                            <circle cx="20" cy="8" r="3" fill="currentColor" />
+                            <circle cx="20" cy="32" r="3" fill="currentColor" />
+                            <circle cx="8" cy="20" r="3" fill="currentColor" />
+                            <circle cx="32" cy="20" r="3" fill="currentColor" />
+                        </svg>
+                        <span>Bloomy</span>
+                    </a>
+                    <p class="footer__tagline">L'innovation à portée d'oreille.</p>
+                </div>
+
+                <div class="footer__links">
+                    <div class="footer__column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="tracking.html">Suivi de commande</a></li>
+                            <li><a href="returns.html">Retours</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__column">
+                        <h4>Légal</h4>
+                        <ul>
+                            <li><a href="cgv.html">CGV</a></li>
+                            <li><a href="privacy.html">Confidentialité</a></li>
+                            <li><a href="mentions.html">Mentions légales</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__column">
+                        <h4>Suivez-nous</h4>
+                        <div class="footer__social">
+                            <a href="#" aria-label="Instagram">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="Twitter">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="YouTube">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="TikTok">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <div class="footer__payment">
+                    <span>Paiement sécurisé</span>
+                    <div class="footer__payment-icons">
+                        <div class="payment-icon">Visa</div>
+                        <div class="payment-icon">Mastercard</div>
+                        <div class="payment-icon">Amex</div>
+                        <div class="payment-icon">Apple Pay</div>
+                        <div class="payment-icon">Google Pay</div>
+                    </div>
+                </div>
+                <p class="footer__copyright">© 2026 Bloomy. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-sidebar__overlay"></div>
+        <div class="cart-sidebar__content">
+            <div class="cart-sidebar__header">
+                <h3>Votre Panier</h3>
+                <button class="cart-sidebar__close" id="cart-close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="cart-sidebar__items" id="cart-items">
+                <!-- Cart items will be inserted here -->
+                <div class="cart-sidebar__empty">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <p>Votre panier est vide</p>
+                </div>
+            </div>
+
+            <div class="cart-sidebar__footer" id="cart-footer" style="display: none;">
+                <div class="cart-sidebar__total">
+                    <span>Total</span>
+                    <span id="cart-total">0€</span>
+                </div>
+                <a href="checkout.html" class="btn btn--primary btn--large cart-sidebar__checkout">
+                    Commander
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12" />
+            </svg>
+        </div>
+        <span class="toast__message">Produit ajouté au panier</span>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Update header based on auth state
+        (function () {
+            const accountLink = document.getElementById('account-link');
+            const accountText = document.getElementById('account-text');
+
+            if (BloomyAuth.isLoggedIn()) {
+                const user = BloomyAuth.getCurrentUser();
+                accountLink.href = 'dashboard.html';
+                accountText.textContent = user.firstName;
+            }
+        })();
+
+        // Cart Logic
+        let selectedColor = 'white';
+
+        function addToCartAndCheckout() {
+            const item = {
+                id: 'bloomy-smart-case',
+                name: 'Bloomy Smart Case',
+                price: 1699, // Prix en centimes pour éviter les erreurs de float (16.99 * 100)
+                color: selectedColor,
+                quantity: 1,
+                image: selectedColor === 'white' ? 'images/hero-product.png' : 'images/hero-product-black.png'
+            };
+            localStorage.setItem('bloomy_cart', JSON.stringify([item]));
+            window.location.href = 'checkout.html';
+        }
+
+        // Color Picker Logic
+        function changeColor(color) {
+            selectedColor = color;
+            const heroImage = document.querySelector('#hero-product img');
+            const colorName = document.getElementById('color-name');
+            const buttons = document.querySelectorAll('.color-btn');
+
+            if (!heroImage) return;
+
+            // Update buttons state
+            buttons.forEach(btn => {
+                btn.style.borderColor = 'transparent';
+                btn.style.transform = 'scale(1)';
+
+                const onclickVal = btn.getAttribute('onclick');
+                if (onclickVal && onclickVal.includes("'" + color + "'")) {
+                    btn.style.borderColor = 'var(--color-accent)';
+                    btn.style.transform = 'scale(1.1)';
+                }
+            });
+
+            // Update image and text with fade effect
+            heroImage.style.opacity = '0';
+
+            setTimeout(() => {
+                if (color === 'white') {
+                    heroImage.src = 'images/hero-product.png';
+                    if (colorName) colorName.textContent = 'Blanc';
+                } else {
+                    heroImage.src = 'images/hero-product-black.png';
+                    if (colorName) colorName.textContent = 'Noir';
+                }
+                heroImage.style.opacity = '1';
+            }, 200);
+        }
+    </script>
+    <script>
+        // Auto-add reveal class to sections
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => {
+                sec.classList.add('reveal');
+            });
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+    <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const moonIcon = document.querySelector('.theme-icon-moon');
+        const sunIcon = document.querySelector('.theme-icon-sun');
+
+        // Check saved theme or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        let currentTheme = savedTheme || systemTheme;
+
+        // Apply theme on load
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            if (theme === 'light') {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            }
+        }
+
+        applyTheme(currentTheme);
+
+        // Toggle Event
+        themeToggleBtn.addEventListener('click', () => {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(currentTheme);
+            localStorage.setItem('theme', currentTheme);
+        });
+
+        // CTA Color Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctaButtons = document.querySelectorAll('.cta__color');
+            const ctaImage = document.querySelector('.cta__product-img');
+
+            // Add transition to image
+            if (ctaImage) ctaImage.style.transition = 'opacity 0.2s ease';
+
+            ctaButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update Active State
+                    ctaButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Update Global Color (sync with Hero logic if needed, but here independent)
+                    const color = btn.dataset.color;
+                    selectedColor = color;
+
+                    // Update Image
+                    if (ctaImage) {
+                        ctaImage.style.opacity = '0';
+                        setTimeout(() => {
+                            if (color === 'white') {
+                                ctaImage.src = 'images/hero-product.png';
+                            } else {
+                                ctaImage.src = 'images/hero-product-black.png';
+                            }
+                            ctaImage.style.opacity = '1';
+                        }, 200);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        (function () {
+            // Force CTA Logic
+            const btns = document.querySelectorAll('.cta__color');
+            const img = document.querySelector('.cta__product-img');
+            btns.forEach(b => {
+                b.addEventListener('click', function (e) {
+                    const color = this.dataset.color;
+
+                    // UI
+                    btns.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Var
+                    if (typeof selectedColor !== 'undefined') selectedColor = color;
+
+                    // Img
+                    if (img) {
+                        img.style.opacity = 0;
+                        setTimeout(() => {
+                            img.src = color === 'white' ? 'images/hero-product.png' : 'images/hero-product-black.png';
+                            img.style.opacity = 1;
+                        }, 200);
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

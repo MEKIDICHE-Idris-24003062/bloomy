@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Votre espace client Bloomy.">
+    <title>Mon Compte | Bloomy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+    <header class="header header--solid" id="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <img src="images/logo.png" alt="Bloomy" class="header__logo-img" style="height: 48px; width: auto;">
+            </a>
+            <div class="header__actions">
+                <a href="index.html" class="btn btn--ghost">Boutique</a>
+                <button class="btn btn--ghost" id="logout-btn">Déconnexion</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <aside class="dashboard__sidebar">
+            <div class="dashboard__user" id="user-info">
+                <div class="dashboard__avatar" id="user-avatar">JD</div>
+                <div class="dashboard__user-info">
+                    <span class="dashboard__name" id="user-name">Jean Dupont</span>
+                    <span class="dashboard__email" id="user-email">jean@example.com</span>
+                </div>
+            </div>
+            <nav class="dashboard__nav">
+                <a href="#overview" class="dashboard__nav-link active" data-section="overview">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                    Vue d'ensemble
+                </a>
+                <a href="#orders" class="dashboard__nav-link" data-section="orders">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    Mes commandes
+                </a>
+                <a href="#addresses" class="dashboard__nav-link" data-section="addresses">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Adresses
+                </a>
+                <a href="#settings" class="dashboard__nav-link" data-section="settings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                    </svg>
+                    Paramètres
+                </a>
+            </nav>
+        </aside>
+
+        <div class="dashboard__content">
+            <!-- Overview Section -->
+            <section class="dashboard__section active" id="section-overview">
+                <div class="dashboard__header">
+                    <h1>Bienvenue, <span id="welcome-name">Jean</span> ðŸ‘‹</h1>
+                    <p>Voici un aperçu de votre compte.</p>
+                </div>
+
+                <div class="dashboard__stats">
+                    <div class="stat-card">
+                        <div class="stat-card__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                <line x1="3" y1="6" x2="21" y2="6" />
+                                <path d="M16 10a4 4 0 0 1-8 0" />
+                            </svg>
+                        </div>
+                        <div class="stat-card__info">
+                            <span class="stat-card__value" id="stat-orders">0</span>
+                            <span class="stat-card__label">Commandes</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <div class="stat-card__info">
+                            <span class="stat-card__value" id="stat-addresses">0</span>
+                            <span class="stat-card__label">Adresses</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+                                <line x1="7" y1="7" x2="7.01" y2="7" />
+                            </svg>
+                        </div>
+                        <div class="stat-card__info">
+                            <span class="stat-card__value" id="stat-member">Nouveau</span>
+                            <span class="stat-card__label">Statut</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard__card">
+                    <h3>Dernières commandes</h3>
+                    <div id="recent-orders">
+                        <div class="empty-state">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                <line x1="3" y1="6" x2="21" y2="6" />
+                                <path d="M16 10a4 4 0 0 1-8 0" />
+                            </svg>
+                            <p>Aucune commande pour le moment</p>
+                            <a href="index.html#buy" class="btn btn--primary">Découvrir nos produits</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section class="dashboard__section" id="section-orders">
+                <div class="dashboard__header">
+                    <h1>Mes commandes</h1>
+                    <p>Retrouvez l'historique de toutes vos commandes.</p>
+                </div>
+
+                <div id="orders-list">
+                    <div class="empty-state">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <path d="M16 10a4 4 0 0 1-8 0" />
+                        </svg>
+                        <p>Vous n'avez pas encore passé de commande</p>
+                        <a href="index.html#buy" class="btn btn--primary">Commander maintenant</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Addresses Section -->
+            <section class="dashboard__section" id="section-addresses">
+                <div class="dashboard__header">
+                    <h1>Mes adresses</h1>
+                    <p>Gérez vos adresses de livraison.</p>
+                </div>
+
+                <div class="dashboard__actions-bar">
+                    <button class="btn btn--primary" id="add-address-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Ajouter une adresse
+                    </button>
+                </div>
+
+                <div id="addresses-list">
+                    <div class="empty-state">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <p>Aucune adresse enregistrée</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="dashboard__section" id="section-settings">
+                <div class="dashboard__header">
+                    <h1>Paramètres</h1>
+                    <p>Gérez les informations de votre compte.</p>
+                </div>
+
+                <!-- Alert Messages -->
+                <div class="alert alert--error" id="settings-error" style="display: none;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="15" y1="9" x2="9" y2="15" />
+                        <line x1="9" y1="9" x2="15" y2="15" />
+                    </svg>
+                    <span id="settings-error-message"></span>
+                </div>
+
+                <div class="alert alert--success" id="settings-success" style="display: none;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span id="settings-success-message"></span>
+                </div>
+
+                <div class="dashboard__card">
+                    <h3>Informations personnelles</h3>
+                    <form id="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="settings-firstname">Prénom</label>
+                                <input type="text" id="settings-firstname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="settings-lastname">Nom</label>
+                                <input type="text" id="settings-lastname" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="settings-email">Email</label>
+                            <input type="email" id="settings-email" disabled>
+                            <small>Pour changer d'email, contactez le support.</small>
+                        </div>
+                        <button type="submit" class="btn btn--primary">Enregistrer</button>
+                    </form>
+                </div>
+
+                <div class="dashboard__card">
+                    <h3>Changer de mot de passe</h3>
+                    <form id="password-form">
+                        <div class="form-group">
+                            <label for="current-password">Mot de passe actuel</label>
+                            <input type="password" id="current-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">Nouveau mot de passe</label>
+                            <input type="password" id="new-password" required minlength="8">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirmer le nouveau mot de passe</label>
+                            <input type="password" id="confirm-password" required>
+                        </div>
+                        <button type="submit" class="btn btn--primary">Changer le mot de passe</button>
+                    </form>
+                </div>
+
+                <div class="dashboard__card dashboard__card--danger">
+                    <h3>Zone de danger</h3>
+                    <p>Supprimer définitivement votre compte et toutes vos données.</p>
+                    <button class="btn btn--danger" id="delete-account-btn">Supprimer mon compte</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Add Address Modal -->
+    <div class="modal" id="address-modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h3>Ajouter une adresse</h3>
+                <button class="modal__close" id="close-address-modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+            <form id="address-form">
+                <div class="form-group">
+                    <label for="addr-label">Nom de l'adresse</label>
+                    <input type="text" id="addr-label" placeholder="Ex: Maison, Bureau" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="addr-firstname">Prénom</label>
+                        <input type="text" id="addr-firstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="addr-lastname">Nom</label>
+                        <input type="text" id="addr-lastname" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="addr-street">Adresse</label>
+                    <input type="text" id="addr-street" required>
+                </div>
+                <div class="form-group">
+                    <label for="addr-street2">Complément (optionnel)</label>
+                    <input type="text" id="addr-street2">
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 0.4;">
+                        <label for="addr-postal">Code postal</label>
+                        <input type="text" id="addr-postal" required>
+                    </div>
+                    <div class="form-group" style="flex: 0.6;">
+                        <label for="addr-city">Ville</label>
+                        <input type="text" id="addr-city" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="addr-country">Pays</label>
+                    <select id="addr-country" required>
+                        <option value="FR">France</option>
+                        <option value="BE">Belgique</option>
+                        <option value="CH">Suisse</option>
+                        <option value="DE">Allemagne</option>
+                        <option value="US">États-Unis</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="addr-phone">Téléphone</label>
+                    <input type="tel" id="addr-phone">
+                </div>
+                <div class="modal__actions">
+                    <button type="button" class="btn btn--ghost" id="cancel-address">Annuler</button>
+                    <button type="submit" class="btn btn--primary">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Account Modal -->
+    <div class="modal" id="delete-modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h3>Supprimer le compte</h3>
+                <button class="modal__close" id="close-delete-modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+            <p style="margin-bottom: var(--spacing-lg); color: var(--color-text-secondary);">
+                Cette action est irréversible. Toutes vos données seront définitivement supprimées.
+            </p>
+            <form id="delete-form">
+                <div class="form-group">
+                    <label for="delete-password">Entrez votre mot de passe pour confirmer</label>
+                    <input type="password" id="delete-password" required>
+                </div>
+                <div class="modal__actions">
+                    <button type="button" class="btn btn--ghost" id="cancel-delete">Annuler</button>
+                    <button type="submit" class="btn btn--danger">Supprimer définitivement</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

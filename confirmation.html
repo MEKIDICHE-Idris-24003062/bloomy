@@ -1,0 +1,377 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confirmation de votre commande Bloomy.">
+    <title>Commande Confirmée | Bloomy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <style>
+        .confirmation {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .confirmation__icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-xl);
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        .confirmation__icon svg {
+            width: 48px;
+            height: 48px;
+            color: #22c55e;
+            animation: checkmark 0.3s ease-out 0.3s both;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes checkmark {
+            from {
+                stroke-dashoffset: 50;
+            }
+
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .confirmation__title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .confirmation__subtitle {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .confirmation__card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            text-align: left;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .confirmation__card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .confirmation__order-number {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+        }
+
+        .confirmation__status {
+            padding: var(--spacing-xs) var(--spacing-md);
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+
+        .confirmation__details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .confirmation__detail-group h4 {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .confirmation__detail-group p {
+            margin: 4px 0;
+        }
+
+        .confirmation__items {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .confirmation__item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) 0;
+        }
+
+        .confirmation__item-image {
+            width: 60px;
+            height: 60px;
+            background: #1a1a1a;
+            border-radius: var(--radius-md);
+        }
+
+        .confirmation__item-name {
+            font-weight: 500;
+        }
+
+        .confirmation__item-variant {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .confirmation__item-price {
+            margin-left: auto;
+            font-weight: 600;
+        }
+
+        .confirmation__total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-border);
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+        }
+
+        .confirmation__actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+
+        .confirmation__actions .btn {
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .confirmation__email-note {
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg);
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: var(--radius-lg);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .confirmation__email-note svg {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: var(--spacing-sm);
+            color: var(--color-accent);
+        }
+
+        @media (max-width: 600px) {
+            .confirmation__details {
+                grid-template-columns: 1fr;
+            }
+
+            .confirmation__actions {
+                flex-direction: column;
+            }
+
+            .confirmation__actions .btn {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header header--solid" id="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <img src="images/logo.png" alt="Bloomy" class="header__logo-img" style="height: 48px; width: auto;">
+            </a>
+        </div>
+    </header>
+
+    <main class="page">
+        <div class="confirmation">
+            <div class="confirmation__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                </svg>
+            </div>
+
+            <h1 class="confirmation__title">Merci pour votre commande !</h1>
+            <p class="confirmation__subtitle">Votre paiement a été accepté et votre commande est en cours de
+                traitement.
+            </p>
+
+            <div class="confirmation__card">
+                <div class="confirmation__card-header">
+                    <span class="confirmation__order-number" id="order-id">BLM-2026-XXXXX</span>
+                    <span class="confirmation__status">Confirmée</span>
+                </div>
+
+                <div class="confirmation__details">
+                    <div class="confirmation__detail-group">
+                        <h4>Livraison</h4>
+                        <p id="shipping-name">Jean Dupont</p>
+                        <p id="shipping-address">123 Rue de Paris</p>
+                        <p id="shipping-city">75001 Paris, France</p>
+                    </div>
+                    <div class="confirmation__detail-group">
+                        <h4>Délai estimé</h4>
+                        <p id="shipping-delay">3-5 jours ouvrés</p>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">
+                            Vous recevrez un email avec le suivi dès l'expédition.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="confirmation__items" id="order-items">
+                    <!-- Items loaded dynamically -->
+                </div>
+
+                <div class="confirmation__total">
+                    <span>Total payé</span>
+                    <span id="order-total">149,00€</span>
+                </div>
+            </div>
+
+            <div class="confirmation__actions">
+                <a href="tracking.html" class="btn btn--primary" id="track-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="margin-right: 8px;">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Suivre ma commande
+                </a>
+                <a href="index.html" class="btn btn--ghost">
+                    Continuer mes achats
+                </a>
+            </div>
+
+            <div class="confirmation__email-note">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                Un email de confirmation a été envoyé Ã  <strong id="customer-email">votre@email.com</strong>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer footer--simple">
+        <div class="footer__container">
+            <p class="footer__copyright">© 2026 Bloomy. Tous droits réservés.</p>
+            <div class="footer__links-inline">
+                <a href="cgv.html">CGV</a>
+                <a href="privacy.html">Confidentialité</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Get order ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('order');
+
+        if (orderId) {
+            // Get order from database
+            const order = BloomyAuth.getOrderById(orderId);
+
+            if (order) {
+                // Populate order details
+                document.getElementById('order-id').textContent = order.id;
+                document.getElementById('customer-email').textContent = order.email;
+                document.getElementById('order-total').textContent = order.total.toFixed(2).replace('.', ',') + '€';
+
+                // Shipping info
+                if (order.shipping) {
+                    document.getElementById('shipping-name').textContent =
+                        order.shipping.firstName + ' ' + order.shipping.lastName;
+                    document.getElementById('shipping-address').textContent = order.shipping.address;
+                    document.getElementById('shipping-city').textContent =
+                        order.shipping.postal + ' ' + order.shipping.city + ', ' + order.shipping.country;
+
+                    // Shipping delay based on method
+                    const delays = {
+                        standard: '3-5 jours ouvrés',
+                        express: '1-2 jours ouvrés'
+                    };
+                    document.getElementById('shipping-delay').textContent =
+                        delays[order.shipping.method] || '3-5 jours ouvrés';
+                }
+
+                // Order items
+                const colorNames = { black: 'Noir', white: 'Blanc' };
+                const itemsHtml = order.items.map(item => {
+                    const imageSrc = item.image || (item.color === 'black' ? 'images/hero-product-black.png' : 'images/hero-product.png');
+                    return `
+                    <div class="confirmation__item">
+                        <div class="confirmation__item-image">
+                            <img src="${imageSrc}" alt="${item.name}" style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius-md);">
+                        </div>
+                        <div>
+                            <div class="confirmation__item-name">${item.name}</div>
+                            <div class="confirmation__item-variant">${colorNames[item.color] || item.color} • ${item.quantity}</div>
+                        </div>
+                        <div class="confirmation__item-price">${item.price}€</div>
+                    </div>
+                `}).join('');
+                document.getElementById('order-items').innerHTML = itemsHtml;
+
+                // Update tracking button
+                document.getElementById('track-btn').href = `tracking.html?order=${order.id}`;
+
+            } else {
+                // Order not found
+                document.querySelector('.confirmation').innerHTML = `
+                    <div class="confirmation__icon" style="background: rgba(239, 68, 68, 0.15);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="15" y1="9" x2="9" y2="15"/>
+                            <line x1="9" y1="9" x2="15" y2="15"/>
+                        </svg>
+                    </div>
+                    <h1 class="confirmation__title">Commande introuvable</h1>
+                    <p class="confirmation__subtitle">Nous n'avons pas trouvé de commande avec ce numéro.</p>
+                    <a href="index.html" class="btn btn--primary">Retour à l'accueil</a>
+                `;
+            }
+        } else {
+            // No order ID
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>
